@@ -6,10 +6,9 @@ Summary:        Library That Defines Common Error Values for All GnuPG Component
 Url:            http://www.gnupg.org/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
-Source2:        baselibs.conf
+Source1:        baselibs.conf
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This is a library that defines common error values for all GnuPG
@@ -36,8 +35,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-# Drop the lisp stuff, it depends on ASDF and CFFI
-# which needs to be packaged first
 rm -r %{buildroot}%{_datadir}/common-lisp
 %find_lang %{name}
 
@@ -45,13 +42,16 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 
 %postun -p /sbin/ldconfig
 
-%files  -f %{name}.lang
+%lang_package
+
+
+%files 
 %defattr(-,root,root)
+%license COPYING.LIB COPYING 
 %{_libdir}/libgpg-error*.so.*
 
 %files devel
 %defattr(-,root,root)
-%doc README NEWS ChangeLog COPYING.LIB COPYING AUTHORS ABOUT-NLS
 %{_datadir}/aclocal/gpg-error.m4
 %{_includedir}/*
 %{_bindir}/*
