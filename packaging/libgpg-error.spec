@@ -4,7 +4,7 @@ Release:        0
 License:        GPL-2.0+ ; LGPL-2.1+
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 Url:            http://www.gnupg.org/
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  gettext-tools
@@ -18,7 +18,7 @@ pinentry, SmartCard Daemon, and possibly more in the future.
 %package devel
 License:        GPL-2.0+ ; LGPL-2.1+ ; MIT
 Summary:        Development package for libgpg-error
-Group:          Development/Libraries/C and C++
+Group:          Development/Libraries
 Requires:       glibc-devel
 Requires:       libgpg-error = %{version}
 
