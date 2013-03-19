@@ -4,7 +4,7 @@ Release:        0
 License:        GPL-2.0+ ; LGPL-2.1+
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 Url:            http://www.gnupg.org/
-Group:          System/Libraries
+Group:          Security/Crypto Libraries
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  gettext-tools
