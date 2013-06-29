@@ -7,6 +7,7 @@ Url:            http://www.gnupg.org/
 Group:          Security/Crypto Libraries
 Source:         %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+Source1001: 	libgpg-error.manifest
 BuildRequires:  gettext-tools
 BuildRequires:  libtool
 
@@ -27,6 +28,7 @@ Files needed for software development using libgpg-error.
 
 %prep
 %setup -q -n libgpg-error-%{version}
+cp %{SOURCE1001} .
 
 %build
 autoreconf -fiv
@@ -46,11 +48,13 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 
 
 %files 
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYING.LIB COPYING 
 %{_libdir}/libgpg-error*.so.*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_datadir}/aclocal/gpg-error.m4
 %{_includedir}/*
