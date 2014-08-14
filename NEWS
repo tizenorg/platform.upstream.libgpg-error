@@ -1,5 +1,69 @@
+Noteworthy changes in version 1.13 (2014-04-15)
+-----------------------------------------------
+
+ * Added a portable mutex API.
+
+ * The AM_PATH_GPG_ERROR macro now defines GPG_ERROR_MT_CFLAGS and
+   GPG_ERROR_MT_LIBS autoconf output variables for use by programs
+   which need gpgrt based thread support.  gpg-error-config has a new
+   option --mt.
+
+ * Interface changes relative to the 1.12 release:
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ GPG_ERR_KEY_ON_CARD          NEW.
+ GPG_ERR_MAC_ALGO             NEW.
+ GPG_ERR_INV_LOCK_OBJ         NEW.
+ gpgrt_lock_t                 NEW.
+ GPGRT_LOCK_INITIALIZER       NEW.
+ GPGRT_LOCK_DEFINE            NEW.
+ gpgrt_lock_init              NEW.
+ gpgrt_lock_lock              NEW.
+ gpgrt_lock_unlock            NEW.
+ gpgrt_lock_destroy           NEW.
+ gpgrt_yield                  NEW.
+
+
+Noteworthy changes in version 1.12 (2013-06-24)
+-----------------------------------------------
+
+ * Add support for 64 bit Windows (use ./autogen.sh --build-w64).
+
+ * Fixed parsing and installing of the Windows .def file.
+
+ * Interface changes relative to the 1.11 release:
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ GPG_ERR_NO_CRYPT_CTX         NEW.
+ GPG_ERR_WRONG_CRYPT_CTX      NEW.
+ GPG_ERR_BAD_CRYPT_CTX        NEW.
+ GPG_ERR_CRYPT_CTX_CONFLICT   NEW.
+ GPG_ERR_BROKEN_PUBKEY        NEW.
+ GPG_ERR_BROKEN_SECKEY        NEW.
+
+
+Noteworthy changes in version 1.11 (2013-02-25)
+-----------------------------------------------
+
+ * New error source GPG_ERR_SOURCE_ASSUAN for Libassuan related
+   errors.
+
+ * New macros GPG_ERROR_VERSION and GPG_ERROR_VERSION_NUMBER.  New
+   function gpg_error_check_version.
+
+ * Interface changes relative to the 1.10 release:
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ GPG_ERR_NO_KEYSERVER          NEW.
+ GPG_ERR_INV_CURVE             NEW.
+ GPG_ERR_UNKNOWN_CURVE         NEW.
+ GPG_ERR_DUP_KEY               NEW.
+ GPG_ERR_AMBIGUOUS             NEW.
+ GPG_ERR_SOURCE_ASSUAN         NEW.
+ gpg_error_check_version       NEW.
+ GPG_ERROR_VERSION             NEW.
+ GPG_ERROR_VERSION_NUMBER      NEW.
+
+
 Noteworthy changes in version 1.10 (2010-10-26)
-----------------------------------------------
+-----------------------------------------------
 
  * Using a static library on W32 does now work.
 
@@ -38,7 +102,7 @@ Noteworthy changes in version 1.8 (2010-05-06)
  GPG_ERR_SOURCE_G13            NEW.
  GPG_ERR_NO_ENGINE             NEW.
  gpg_err_set_errno             NEW.
- 
+
 
 Noteworthy changes in version 1.7 (2008-11-26)
 ----------------------------------------------
@@ -89,7 +153,7 @@ Noteworthy changes in version 1.4 (2006-09-14)
    libgpg-error even if a specific source is not available.
 
  * New convenience functions gpg_err_code_from_syserror and
-   gpg_error_from_syserror which make sure never to return 0. 
+   gpg_error_from_syserror which make sure never to return 0.
 
  * Interface changes relative to the 1.2 release:
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

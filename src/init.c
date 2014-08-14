@@ -33,6 +33,13 @@
 
 #ifdef HAVE_W32CE_SYSTEM
 # include "mkw32errmap.map.c"  /* Generated map_w32codes () */
+# ifndef TLS_OUT_OF_INDEXES
+#  define TLS_OUT_OF_INDEXES 0xFFFFFFFF
+# endif
+# ifndef __MINGW32CE__
+#  /* Replace the Mingw32CE provided abort function.  */
+#  define abort() do { TerminateProcess (GetCurrentProcess(), 8); } while (0)
+# endif
 #endif
 
 
@@ -380,6 +387,10 @@ DllMain (HINSTANCE hinst, DWORD reason, LPVOID reserved)
       tls_index = TlsAlloc ();
       if (tls_index == TLS_OUT_OF_INDEXES)
         return FALSE; 
+#ifndef _GPG_ERR_HAVE_CONSTRUCTOR
+      /* If we have not constructors (e.g. MSC) we call it here.  */
+      _gpg_w32__init_gettext_module ();
+#endif
       /* falltru.  */
     case DLL_THREAD_ATTACH:
       tls = LocalAlloc (LPTR, sizeof *tls);
