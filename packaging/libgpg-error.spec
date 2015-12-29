@@ -1,7 +1,7 @@
 Name:           libgpg-error
 Version:        1.13
 Release:        0
-License:        GPL-2.0+ ; LGPL-2.1+
+License:        LGPL-2.1+ and GPL-2.0+
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 Url:            http://www.gnupg.org/
 Group:          Security/Crypto Libraries
@@ -17,7 +17,7 @@ components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon, and possibly more in the future.
 
 %package devel
-License:        GPL-2.0+ ; LGPL-2.1+ ; MIT
+License:        LGPL-2.1+ and GPL-2.0+ and MIT
 Summary:        Development package for libgpg-error
 Group:          Development/Libraries
 Requires:       glibc-devel
@@ -56,6 +56,7 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 %files devel
 %manifest %{name}.manifest
 %defattr(-,root,root)
+%license COPYING.MIT
 %{_datadir}/aclocal/gpg-error.m4
 %{_includedir}/*
 %{_bindir}/*
