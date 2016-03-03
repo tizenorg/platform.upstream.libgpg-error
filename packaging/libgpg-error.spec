@@ -17,7 +17,7 @@ components.  Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
 pinentry, SmartCard Daemon, and possibly more in the future.
 
 %package devel
-License:        LGPL-2.1+ and GPL-2.0+ and X11 
+License:        LGPL-2.1+ and GPL-2.0+ and X11
 Summary:        Development package for libgpg-error
 Group:          Development/Libraries
 Requires:       glibc-devel
