@@ -568,7 +568,7 @@ typedef unsigned int gpg_error_t;
 /* Initialization function.  */
 
 /* Initialize the library.  This function should be run early.  */
-gpg_error_t gpg_err_init (void) _GPG_ERR_CONSTRUCTOR;
+__attribute__ ((visibility ("default"))) gpg_error_t gpg_err_init (void) _GPG_ERR_CONSTRUCTOR;
 
 /* If this is defined, the library is already initialized by the
    constructor and does not need to be initialized explicitely.  */
@@ -579,7 +579,7 @@ gpg_error_t gpg_err_init (void) _GPG_ERR_CONSTRUCTOR;
 
 /* See the source on how to use the deinit function; it is usually not
    required.  */
-void gpg_err_deinit (int mode);
+__attribute__ ((visibility ("default"))) void gpg_err_deinit (int mode);
 
 
 /* Constructor and accessor functions.  */
@@ -629,7 +629,7 @@ gpg_err_source (gpg_error_t err)
 
 /* Return a pointer to a string containing a description of the error
    code in the error value ERR.  This function is not thread-safe.  */
-const char *gpg_strerror (gpg_error_t err);
+__attribute__ ((visibility ("default"))) const char *gpg_strerror (gpg_error_t err);
 
 /* Return the error string for ERR in the user-supplied buffer BUF of
    size BUFLEN.  This function is, in contrast to gpg_strerror,
@@ -638,11 +638,11 @@ const char *gpg_strerror (gpg_error_t err);
    contains the string describing the error.  If the buffer was not
    large enough, ERANGE is returned and BUF contains as much of the
    beginning of the error string as fits into the buffer.  */
-int gpg_strerror_r (gpg_error_t err, char *buf, size_t buflen);
+__attribute__ ((visibility ("default"))) int gpg_strerror_r (gpg_error_t err, char *buf, size_t buflen);
 
 /* Return a pointer to a string containing a description of the error
    source in the error value ERR.  */
-const char *gpg_strsource (gpg_error_t err);
+__attribute__ ((visibility ("default"))) const char *gpg_strsource (gpg_error_t err);
 
 
 /* Mapping of system errors (errno).  */
@@ -650,26 +650,26 @@ const char *gpg_strsource (gpg_error_t err);
 /* Retrieve the error code for the system error ERR.  This returns
    GPG_ERR_UNKNOWN_ERRNO if the system error is not mapped (report
    this). */
-gpg_err_code_t gpg_err_code_from_errno (int err);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpg_err_code_from_errno (int err);
 
 
 /* Retrieve the system error for the error code CODE.  This returns 0
    if CODE is not a system error code.  */
-int gpg_err_code_to_errno (gpg_err_code_t code);
+__attribute__ ((visibility ("default"))) int gpg_err_code_to_errno (gpg_err_code_t code);
 
 
 /* Retrieve the error code directly from the ERRNO variable.  This
    returns GPG_ERR_UNKNOWN_ERRNO if the system error is not mapped
    (report this) and GPG_ERR_MISSING_ERRNO if ERRNO has the value 0. */
-gpg_err_code_t gpg_err_code_from_syserror (void);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpg_err_code_from_syserror (void);
 
 
 /* Set the ERRNO variable.  This function is the preferred way to set
    ERRNO due to peculiarities on WindowsCE.  */
-void gpg_err_set_errno (int err);
+__attribute__ ((visibility ("default"))) void gpg_err_set_errno (int err);
 
 /* Return or check the version.  */
-const char *gpg_error_check_version (const char *req_version);
+__attribute__ ((visibility ("default"))) const char *gpg_error_check_version (const char *req_version);
 
 /* The version string of this header. */
 #define GPG_ERROR_VERSION "1.13"
@@ -725,16 +725,16 @@ typedef struct
 
 /* NB: If GPGRT_LOCK_DEFINE is not used, zero out the lock variable
    before passing it to gpgrt_lock_init.  */
-gpg_err_code_t gpgrt_lock_init (gpgrt_lock_t *lockhd);
-gpg_err_code_t gpgrt_lock_lock (gpgrt_lock_t *lockhd);
-gpg_err_code_t gpgrt_lock_unlock (gpgrt_lock_t *lockhd);
-gpg_err_code_t gpgrt_lock_destroy (gpgrt_lock_t *lockhd);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpgrt_lock_init (gpgrt_lock_t *lockhd);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpgrt_lock_lock (gpgrt_lock_t *lockhd);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpgrt_lock_unlock (gpgrt_lock_t *lockhd);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpgrt_lock_destroy (gpgrt_lock_t *lockhd);
 
 
 
 /* Thread functions.  */
 
-gpg_err_code_t gpgrt_yield (void);
+__attribute__ ((visibility ("default"))) gpg_err_code_t gpgrt_yield (void);
 
 
 

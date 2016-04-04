@@ -31,6 +31,9 @@ Files needed for software development using libgpg-error.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 autoreconf -fiv
 %configure --disable-static --with-pic
 make %{?_smp_mflags}
